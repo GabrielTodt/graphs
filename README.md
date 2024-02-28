@@ -1,2 +1,2 @@
 # graphs
-Repositório dedicado ao estudo e de estruturas e algoritmos de grafos.
+Repositório dedicado ao estudo e implementação de estruturas e algoritmos de grafos.
