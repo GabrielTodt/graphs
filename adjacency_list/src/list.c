@@ -95,3 +95,57 @@ void create_pointer_array(int *source, int *pointer, int vertexes) {
         j++;
     }
 }
+
+
+/**
+ * @brief Implements a sorting algorithm to sort an array 'source' and simultaneously rearrange
+ *        the corresponding elements in the 'target' array based on a median of three approach.
+ *
+ * @param source Pointer to the array to be sorted.
+ * @param target Pointer to the corresponding array whose elements are to be rearranged along with 'source'.
+ * @param start The starting index of the current partition.
+ * @param end The ending index of the current partition.
+ */
+void sort_by_source_private(int *source, int *target, int start, int end){
+    int pivo = source[start]; 
+    int left = start;
+    int righ = end;
+    while (left<=righ){
+        while (source[left] < pivo)
+            left++;
+        while (source[righ] > pivo)
+            righ--;
+        if (left<=righ){
+            int tmp = source[left];
+            source[left] = source[righ];
+            source[righ] = tmp;
+            //Target swap
+            tmp = target[left];
+            target[left] = target[righ];
+            target[righ] = tmp;
+            left++;
+            righ--;
+        }
+    }
+    if(start<righ)
+        sort_by_source_private(source, target, start, righ);
+    if(left<end)
+        sort_by_source_private(source, target, left, end);
+}
+
+
+/**
+ * @brief Provides an interface for sorting an array 'source' and rearranging the corresponding
+ *        elements in 'target'.
+ *
+ * @param source Pointer to the array to be sorted.
+ * @param target Pointer to the corresponding array whose elements are to be rearranged along with 'source'.
+ * @param size The size of the arrays.
+ *
+ * @note Calls the private sorting function with appropriate initial parameters.
+ */
+void sort_by_source(int *source, int *target, int size){
+    sort_by_source_private(source, target, 1, size-1);
+}
+
+

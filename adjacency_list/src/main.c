@@ -31,6 +31,7 @@ int main(int argc, char const *argv[])
         fgets(line, MAX_LINE_LENGTH, fp);
         sscanf(line, "%d %d", &source[i], &target[i]);
     }
+    sort_by_source(source,target,source_target_size);
     //Create pointer array
     create_pointer_array(source, pointer, num_vertexes);
 
