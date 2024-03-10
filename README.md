@@ -1,2 +1,2 @@
 # graphs
-Implementation of the adjacency list structure using arrays for graph representation.
+Repository dedicated to the implementation of algorithms and graph structures.
